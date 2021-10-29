@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Practica3</string>
+    <string name="tv_Nombre">Alexandro Rodríguez Parrón</string>
+    <string name="bNuevo">Nuevo</string>
+    <string name="bSalir">Salir</string>
+    <string name="tv_NuevoContacto">Nuevo Contacto</string>
+    <string name="tv_NombreNueCont">Nombre</string>
+    <string name="tv_ApellidosNueCon">Apellidos</string>
+    <string name="tv_EmpresaNueCon">Empresa</string>
+    <string name="telefono">Teléfono</string>
+    <string name="rbEmpresa">Empresa</string>
+    <string name="rbParticular">Particular</string>
+    <string name="sFavoritos">Favoritos</string>
+    <string name="rbHombre">Hombre</string>
+    <string name="rbMujer">Mujer</string>
+    <string name="cb_RecorLlamar">Recordar Llamar</string>
+    <string name="tv_Edad">Edad: </string>
+    <string name="edad_Formateada">Edad: %1$d</string>
+    <string name="bOK">OK</string>
+    <string name="bCancel">Cancel</string>
+    <string name="etValor">Introduce un valor</string>
+
+
 </resources>

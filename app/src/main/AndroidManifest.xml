@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practica3">
         <activity
+            android:name=".StartActivyForResult"
+            android:exported="false" />
+        <activity
+            android:name=".NuevoContactoActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
