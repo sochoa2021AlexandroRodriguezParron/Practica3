@@ -15,8 +15,8 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -27,8 +27,8 @@
         android:text="@string/tv_NombreNueCont"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto" />
 
     <TextView
@@ -39,8 +39,8 @@
         android:text="@string/tv_ApellidosNueCon"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tv_NombreNueCont" />
 
     <TextView
@@ -51,8 +51,8 @@
         android:text="@string/tv_EmpresaNueCon"
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tv_ApellidosNueCon" />
 
     <EditText
@@ -63,8 +63,8 @@
         android:ems="10"
         android:hint="@string/telefono"
         android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/tv_EmpresaNueCon" />
 
 
@@ -74,8 +74,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/etTelefono"
         tools:ignore="MissingConstraints">
 
@@ -98,6 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/sFavoritos"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grbGrupo1"
         tools:checked="false" />
@@ -107,9 +108,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toEndOf="@+id/sFavoritos"
+        android:layout_marginEnd="32dp"
 
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/grbGrupo1"
         tools:ignore="MissingConstraints">
 
@@ -183,40 +186,71 @@
 
     <ImageView
         android:id="@+id/iv_Emp_Par"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_llamar"
         app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto"
-        app:srcCompat="@android:drawable/btn_radio" />
+        app:srcCompat="@drawable/ic_empresa_foreground" />
 
     <ImageView
         android:id="@+id/iv_llamar"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_Emp_Par"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto"
-        app:srcCompat="@android:drawable/btn_radio" />
+        app:srcCompat="@drawable/ic_llamar_foreground" />
 
     <ImageView
         android:id="@+id/iv_Favor"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:adjustViewBounds="false"
+        android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/iv_Hom_Muj"
         app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto"
-        app:srcCompat="@android:drawable/btn_radio" />
+        app:srcCompat="@drawable/ic_favorito_foreground" />
 
     <ImageView
         android:id="@+id/iv_Hom_Muj"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toStartOf="@+id/iv_Favor"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tv_NombreNueCont"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto"
+        app:srcCompat="@drawable/ic_hombre_foreground" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/iv_Favor"
-        app:layout_constraintTop_toBottomOf="@+id/tv_NuevoContacto"
-        app:srcCompat="@android:drawable/btn_radio" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

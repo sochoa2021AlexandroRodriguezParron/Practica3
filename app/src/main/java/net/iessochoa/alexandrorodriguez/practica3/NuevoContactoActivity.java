@@ -127,11 +127,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
                 switch (checkedId){
                     case R.id.rbEmpresa:
                         iv_Emp_Par.setVisibility(View.VISIBLE);
-                        //iv_Emp_Par.setImageResource(R.drawable.ic_empresa_foreground);
+                        iv_Emp_Par.setImageResource(R.drawable.ic_empresa_foreground);
                         break;
                     case R.id.rbParticular:
                         iv_Emp_Par.setVisibility(View.VISIBLE);
-                        //iv_Emp_Par.setImageResource(R.drawable.ic_particular_foreground);
+                        iv_Emp_Par.setImageResource(R.drawable.ic_particular_foreground);
                         break;
                 }
             }
@@ -142,11 +142,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
                 switch (checkedId){
                     case R.id.rbHombre:
                         iv_Hom_Muj.setVisibility(View.VISIBLE);
-                        //iv_Hom_Muj.setImageResource(R.mipmap.ic_masculino_background);
+                        iv_Hom_Muj.setImageResource(R.drawable.ic_hombre_foreground);
                         break;
                     case R.id.rbMujer:
                         iv_Hom_Muj.setVisibility(View.VISIBLE);
-                        //iv_Hom_Muj.setImageResource(R.mipmap.ic_femenino_background);
+                        iv_Hom_Muj.setImageResource(R.drawable.ic_mujer_foreground);
                         break;
                 }
             }
@@ -158,7 +158,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     iv_llamar.setVisibility(View.VISIBLE);
-                    //iv_llamar.setImageResource(R.drawable.ic_record_llamar_foreground);
+                    iv_llamar.setImageResource(R.drawable.ic_llamar_foreground);
                 }else{
                     iv_llamar.setVisibility(View.INVISIBLE);
                 }
@@ -171,7 +171,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     iv_Favor.setVisibility(View.VISIBLE);
-                    //iv_Favor.setImageResource(R.drawable.ic_favoritos_foreground);
+                    iv_Favor.setImageResource(R.drawable.ic_favorito_foreground);
                 }else{
                     iv_Favor.setVisibility(View.INVISIBLE);
                 }
@@ -182,6 +182,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         //Listener SeekBar
         sbEdad.setOnSeekBarChangeListener(this);
 
+        /**----------------------------------------------------------*/
+        //Listener Botones
+        bOK.setOnClickListener(this);
+        bCancel.setOnClickListener(this);
+
     }
 
     /**----------------------------------------------------------*/
@@ -191,25 +196,31 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
 
 
     /**----------------------------------------------------------*/
-    //TextView funcionamiento
+    //TextView y Button funcionamiento
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             //TextView
             case R.id.tv_NombreNueCont:
-                cambiarActividadValores();
+                cambiarActividad(StartActivyForResult.class);
                 break;
             case R.id.tv_ApellidosNueCon:
-                cambiarActividadValores();
+                cambiarActividad(StartActivyForResult.class);
                 break;
             case R.id.tv_EmpresaNueCon:
-                cambiarActividadValores();
+                cambiarActividad(StartActivyForResult.class);
+                break;
+            case R.id.bOK:
+
+                break;
+            case R.id.bCancel:
+                finish();
                 break;
         }
     }
 
-    public void cambiarActividadValores(){
-        Intent intent = new Intent(NuevoContactoActivity.this, StartActivyForResult.class);
+    public void cambiarActividad(Class<?> actividad){
+        Intent intent = new Intent(NuevoContactoActivity.this, actividad);
         startActivity(intent);
     }
 

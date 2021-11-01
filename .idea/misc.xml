@@ -3,9 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/drawable/ic_favorito_foreground.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/drawable/ic_hombre_foreground.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/drawable/ic_llamar_foreground.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/drawable/ic_mujer_background.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/drawable/ic_particular_background.xml" value="0.14629629629629629" />
         <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/layout/activity_nuevo_contacto.xml" value="0.1" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/layout/activity_nuevo_contacto.xml" value="0.22" />
         <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/layout/activity_start_activy_for_result.xml" value="0.1" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/mipmap-anydpi-v26/ic_empresa.xml" value="0.1537037037037037" />
+        <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/mipmap-anydpi-v26/ic_empresa_round.xml" value="0.1" />
       </map>
     </option>
   </component>
