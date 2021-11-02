@@ -1,5 +1,6 @@
 package net.iessochoa.alexandrorodriguez.practica3;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,13 +15,14 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-    //Constantes EXTRA_
-    public final static String EXTRA_DATOS_RESULTADO="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.datos";
-    public final static String EXTRA_DATOS="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.datos";
 
     //Constantes
     public final static int OPTION_REQUEST_NOMBRE=0;
@@ -107,6 +109,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         iv_Favor.setVisibility(View.INVISIBLE);
         iv_Hom_Muj = findViewById(R.id.iv_Hom_Muj);
         iv_Hom_Muj.setVisibility(View.INVISIBLE);
+        //ActivityResultLauncher
+        ActivityResultLauncher<Intent> mStartForResultNombre;
+        ActivityResultLauncher<Intent> mStartForResultApellidos;
+        ActivityResultLauncher<Intent> mStartForResultEmpresa;
+
 
 
 
@@ -185,6 +192,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         bOK.setOnClickListener(this);
         bCancel.setOnClickListener(this);
 
+
+        /**----------------------------------------------------------*/
+        mStartForResultNombre = activityLauncher(tv_NombreNueCont);
+        mStartForResultApellidos = activityLauncher(tv_ApellidosNueCon);
+        mStartForResultEmpresa = activityLauncher(tv_EmpresaNueCon);
     }
 
     /**----------------------------------------------------------*/
@@ -198,22 +210,17 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
-
-            //TextView
+            /**TextView*/
             case R.id.tv_NombreNueCont:
-                cambiarActividad(StartActivyForResult.class);
-
-
+                //llamarDatos(mStartForResultNombre, tv_NombreNueCont);
                 break;
             case R.id.tv_ApellidosNueCon:
-                cambiarActividad(StartActivyForResult.class);
 
                 break;
             case R.id.tv_EmpresaNueCon:
-                cambiarActividad(StartActivyForResult.class);
 
                 break;
+            /**Buttons*/
             case R.id.bOK:
 
                 break;
@@ -224,10 +231,27 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         }
     }
 
-    public void cambiarActividad(Class<?> actividad){
-        Intent intent = new Intent(NuevoContactoActivity.this, actividad);
-        startActivity(intent);
+    public ActivityResultLauncher<Intent> activityLauncher(TextView sobreEscribir){
+        ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        //si el usuario pulsa OK en la Activity que hemos llamado
+                        if (result.getResultCode() == Activity.RESULT_OK) {
+                            //recuperamos los dados
+                            Intent intent = result.getData();
+                            String resultado = intent.getStringExtra(StartActivyForResult.EXTRA_DATOS_RESULTADO);
+                            sobreEscribir.setText(resultado);
+                        }
+                    }
+                });
+        return mStartForResult;
     }
+
+    public void llamarDatos(ActivityResultLauncher<Intent> mStartForResult, TextView sobreEscribir){
+
+    }
+
 
 
 

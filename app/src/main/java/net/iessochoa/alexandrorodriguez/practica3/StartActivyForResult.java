@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class StartActivyForResult extends AppCompatActivity implements View.OnClickListener {
 
+    //Constantes EXTRA_
+    public final static String EXTRA_DATOS_RESULTADO="net.iessochoa.alexandrorodriguez.practica3.StartActivyForResult.datos";
+    public final static String EXTRA_DATOS="net.iessochoa.alexandrorodriguez.practica3.StartActivyForResult.datos";
 
 
     //Atributos
@@ -37,7 +40,7 @@ public class StartActivyForResult extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.bOKValores:
-                pasarValores();
+
                 break;
             case R.id.bCancelValores:
                 setResult(RESULT_CANCELED);
@@ -46,13 +49,4 @@ public class StartActivyForResult extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private void pasarValores() {
-        String valor = etValor.getText().toString();
-        if(!valor.isEmpty()){
-            Intent intent = new Intent(StartActivyForResult.this, NuevoContactoActivity.class);
-            intent.putExtra(NuevoContactoActivity.EXTRA_DATOS, valor);
-            startActivity(intent);
-        }
-
-    }
 }
