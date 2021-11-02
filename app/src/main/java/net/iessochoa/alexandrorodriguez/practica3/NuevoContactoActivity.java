@@ -19,15 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
     //Constantes EXTRA_
-    //public final static String EXTRA_DATOS_RESULTADO="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.class";
-
-    //public final static String EXTRA_DATOS="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.class";
-
+    public final static String EXTRA_DATOS_RESULTADO="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.datos";
+    public final static String EXTRA_DATOS="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.datos";
 
     //Constantes
-    //public final static int OPTION_REQUEST_NOMBRE=0;
-    //public final static int OPTION_REQUEST_APELLIDOS=1;
-    //public final static int OPTION_REQUEST_EMPRESA=2;
+    public final static int OPTION_REQUEST_NOMBRE=0;
+    public final static int OPTION_REQUEST_APELLIDOS=1;
+    public final static int OPTION_REQUEST_EMPRESA=2;
 
     //Atributos
     //TextView
@@ -200,20 +198,27 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+
+
             //TextView
             case R.id.tv_NombreNueCont:
                 cambiarActividad(StartActivyForResult.class);
+
+
                 break;
             case R.id.tv_ApellidosNueCon:
                 cambiarActividad(StartActivyForResult.class);
+
                 break;
             case R.id.tv_EmpresaNueCon:
                 cambiarActividad(StartActivyForResult.class);
+
                 break;
             case R.id.bOK:
 
                 break;
             case R.id.bCancel:
+                setResult(RESULT_CANCELED);
                 finish();
                 break;
         }
