@@ -23,11 +23,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
 
-
-    //Constantes
-    public final static int OPTION_REQUEST_NOMBRE=0;
-    public final static int OPTION_REQUEST_APELLIDOS=1;
-    public final static int OPTION_REQUEST_EMPRESA=2;
+    //Constante para trasladar datos
+    public final static String EXTRA="net.iessochoa.alexandrorodriguez.practica3.NuevoContactoActivity.extra";
 
     //Atributos
     //TextView
@@ -67,6 +64,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
     private ImageView iv_Emp_Par;
     private ImageView iv_Favor;
     private ImageView iv_Hom_Muj;
+
+    //ActivityResultLauncher
+    private ActivityResultLauncher<Intent> mStartForResultNombre;
+    private ActivityResultLauncher<Intent> mStartForResultApellidos;
+    private ActivityResultLauncher<Intent> mStartForResultEmpresa;
 
 
 
@@ -109,13 +111,6 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         iv_Favor.setVisibility(View.INVISIBLE);
         iv_Hom_Muj = findViewById(R.id.iv_Hom_Muj);
         iv_Hom_Muj.setVisibility(View.INVISIBLE);
-        //ActivityResultLauncher
-        ActivityResultLauncher<Intent> mStartForResultNombre;
-        ActivityResultLauncher<Intent> mStartForResultApellidos;
-        ActivityResultLauncher<Intent> mStartForResultEmpresa;
-
-
-
 
         /**----------------------------------------------------------*/
 
@@ -212,17 +207,26 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         switch (v.getId()){
             /**TextView*/
             case R.id.tv_NombreNueCont:
-                //llamarDatos(mStartForResultNombre, tv_NombreNueCont);
+                llamarDatos(mStartForResultNombre, tv_NombreNueCont);
                 break;
             case R.id.tv_ApellidosNueCon:
-
+                llamarDatos(mStartForResultApellidos, tv_ApellidosNueCon);
                 break;
             case R.id.tv_EmpresaNueCon:
-
+                llamarDatos(mStartForResultEmpresa, tv_EmpresaNueCon);
                 break;
             /**Buttons*/
             case R.id.bOK:
+                String nombre = tv_NombreNueCont.getText().toString();
+                String apellido = tv_ApellidosNueCon.getText().toString();
+                long telefono = Long.parseLong(etTelefono.getText().toString());
 
+                String infoGuardar = nombre + " " + apellido + ": " + telefono;
+
+                Intent intent = getIntent();
+                intent.putExtra(EXTRA, infoGuardar);
+                setResult(RESULT_OK, intent);
+                finish();
                 break;
             case R.id.bCancel:
                 setResult(RESULT_CANCELED);
@@ -231,7 +235,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         }
     }
 
-    public ActivityResultLauncher<Intent> activityLauncher(TextView sobreEscribir){
+    public ActivityResultLauncher<Intent> activityLauncher(TextView textView){
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -240,16 +244,18 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
                         if (result.getResultCode() == Activity.RESULT_OK) {
                             //recuperamos los dados
                             Intent intent = result.getData();
-                            String resultado = intent.getStringExtra(StartActivyForResult.EXTRA_DATOS_RESULTADO);
-                            sobreEscribir.setText(resultado);
+                            String resultado = intent.getStringExtra(DatosActivity.EXTRA_DATOS_RESULTADO);
+                            textView.setText(resultado);
                         }
                     }
                 });
         return mStartForResult;
     }
 
-    public void llamarDatos(ActivityResultLauncher<Intent> mStartForResult, TextView sobreEscribir){
-
+    public void llamarDatos(ActivityResultLauncher<Intent> mStartForResult, TextView textView){
+        Intent i=new Intent(this, DatosActivity.class);
+        i.putExtra(DatosActivity.EXTRA_DATOS,textView.getText().toString());
+        mStartForResult.launch(i);
     }
 
 

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Practica3">
         <activity
-            android:name=".StartActivyForResult"
+            android:name=".DatosActivity"
             android:exported="false" />
         <activity
             android:name=".NuevoContactoActivity"
