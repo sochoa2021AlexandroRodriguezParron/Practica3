@@ -19,11 +19,13 @@ import javax.xml.transform.Result;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Atributos
     private Button bNuevo;
     private Button bSalir;
     private TextView tv_Contactos;
     private String nuevoContacto;
 
+    //Método que nos permitirá obtener los datos de la actividad NuevoContactoActivity
     ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //recuperamos los dados
                         Intent intent = result.getData();
                         String resultado = intent.getStringExtra(NuevoContactoActivity.EXTRA);
+                        //nos ayuda para insertar un contacto nuevo en la lista de contactos y añade un Enter para que el siguiente contacto salga por debajo
                         nuevoContacto = tv_Contactos.getText().toString()+"\n"+resultado;
                         tv_Contactos.setText(nuevoContacto);
                     }
@@ -44,12 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Sincronizamos los atributos con los componentes del Layout
         bNuevo = findViewById(R.id.bNuevo);
         bSalir = findViewById(R.id.bSalir);
         tv_Contactos = findViewById(R.id.tv_Contactos);
 
-
-
+        //Listener de los botones
         bNuevo.setOnClickListener(this);
         bSalir.setOnClickListener(this);
 
@@ -59,10 +62,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.bNuevo:
+                //Boton Nuevo, crea objeto intent y lo manda al metodo que hará que recibiremos los datos.
                 Intent i = new Intent(MainActivity.this, NuevoContactoActivity.class);
                 mStartForResult.launch(i);
                 break;
             case R.id.bSalir:
+                //Boton Salir, saldrá de la aplicación.
                 finish();
                 break;
         }

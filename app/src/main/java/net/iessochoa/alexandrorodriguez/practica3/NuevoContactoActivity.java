@@ -102,7 +102,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         //Button
         bOK = findViewById(R.id.bOK);
         bCancel = findViewById(R.id.bCancel);
-        //ImageView
+        //ImageView y establecer invisible
         iv_llamar = findViewById(R.id.iv_llamar);
         iv_llamar.setVisibility(View.INVISIBLE);
         iv_Emp_Par = findViewById(R.id.iv_Emp_Par);
@@ -118,6 +118,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         tv_NombreNueCont.setOnClickListener(this);
         tv_ApellidosNueCon.setOnClickListener(this);
         tv_EmpresaNueCon.setOnClickListener(this);
+        /**----------------------------------------------------------*/
+        //Listener Botones
+        bOK.setOnClickListener(this);
+        bCancel.setOnClickListener(this);
+
 
         /**----------------------------------------------------------*/
         //Listener RadioGroup
@@ -126,10 +131,12 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.rbEmpresa:
+                        //Radio Button Empresa, establece el icono y lo pone visible
                         iv_Emp_Par.setVisibility(View.VISIBLE);
                         iv_Emp_Par.setImageResource(R.drawable.ic_empresa_foreground);
                         break;
                     case R.id.rbParticular:
+                        //Radio Button Particular, establece el icono y lo pone visible
                         iv_Emp_Par.setVisibility(View.VISIBLE);
                         iv_Emp_Par.setImageResource(R.drawable.ic_particular_foreground);
                         break;
@@ -141,10 +148,12 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.rbHombre:
+                        //Radio Button Hombre, establece el icono y lo pone visible
                         iv_Hom_Muj.setVisibility(View.VISIBLE);
                         iv_Hom_Muj.setImageResource(R.drawable.ic_hombre_foreground);
                         break;
                     case R.id.rbMujer:
+                        //Radio Button Empresa, establece el icono y lo pone visible
                         iv_Hom_Muj.setVisibility(View.VISIBLE);
                         iv_Hom_Muj.setImageResource(R.drawable.ic_mujer_foreground);
                         break;
@@ -157,9 +166,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    //Check Box Recordar Llamar, establece el icono y lo pone visible
                     iv_llamar.setVisibility(View.VISIBLE);
                     iv_llamar.setImageResource(R.drawable.ic_llamar_foreground);
                 }else{
+                    //Si no lo pone invisible
                     iv_llamar.setVisibility(View.INVISIBLE);
                 }
             }
@@ -170,9 +181,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    //Switch Favorito, establece el icono y lo pone visible
                     iv_Favor.setVisibility(View.VISIBLE);
                     iv_Favor.setImageResource(R.drawable.ic_favorito_foreground);
                 }else{
+                    //Si no lo pone invisible
                     iv_Favor.setVisibility(View.INVISIBLE);
                 }
             }
@@ -183,22 +196,11 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         sbEdad.setOnSeekBarChangeListener(this);
 
         /**----------------------------------------------------------*/
-        //Listener Botones
-        bOK.setOnClickListener(this);
-        bCancel.setOnClickListener(this);
-
-
-        /**----------------------------------------------------------*/
+        //ActivityLancher, cada atributo obtiene un valor distinto de la clase Datos Activity.
         mStartForResultNombre = activityLauncher(tv_NombreNueCont);
         mStartForResultApellidos = activityLauncher(tv_ApellidosNueCon);
         mStartForResultEmpresa = activityLauncher(tv_EmpresaNueCon);
     }
-
-    /**----------------------------------------------------------*/
-
-    /**----------------------------------------------------------*/
-
-
 
     /**----------------------------------------------------------*/
     //TextView y Button funcionamiento
@@ -220,21 +222,23 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
                 String nombre = tv_NombreNueCont.getText().toString();
                 String apellido = tv_ApellidosNueCon.getText().toString();
                 long telefono = Long.parseLong(etTelefono.getText().toString());
-
+                //Guardamos las variables en un String que se pasará a la clase MainActivity
                 String infoGuardar = nombre + " " + apellido + ": " + telefono;
-
+                //Lo pasamos al MainActivity
                 Intent intent = getIntent();
                 intent.putExtra(EXTRA, infoGuardar);
                 setResult(RESULT_OK, intent);
                 finish();
                 break;
             case R.id.bCancel:
+                //Cancela y termina esta actividad
                 setResult(RESULT_CANCELED);
                 finish();
                 break;
         }
     }
 
+    //Método que nos ayudará a pasar los datos de DatosActivity al TextView indicado
     public ActivityResultLauncher<Intent> activityLauncher(TextView textView){
         ActivityResultLauncher<Intent> mStartForResult = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -252,6 +256,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
         return mStartForResult;
     }
 
+    //Iniciamos la actividad DatosActivity y mandamos los datos de esta actividad a aquella para que se muestre en su EditText
     public void llamarDatos(ActivityResultLauncher<Intent> mStartForResult, TextView textView){
         Intent i=new Intent(this, DatosActivity.class);
         i.putExtra(DatosActivity.EXTRA_DATOS,textView.getText().toString());
@@ -265,6 +270,7 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
     //SeekBar Funcionamiento
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        //Obtenemos el valor del SeekBar y lo establecemos en un textView
         String recurso = getResources().getString(R.string.edad_Formateada);
         String edad = String.format(recurso, progress);
         tv_Edad.setText(edad);
@@ -278,6 +284,4 @@ public class NuevoContactoActivity extends AppCompatActivity implements SeekBar.
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
-
-    /**----------------------------------------------------------*/
 }
