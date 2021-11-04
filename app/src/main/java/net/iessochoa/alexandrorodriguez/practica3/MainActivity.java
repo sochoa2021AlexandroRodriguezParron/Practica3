@@ -19,8 +19,6 @@ import javax.xml.transform.Result;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-
     private Button bNuevo;
     private Button bSalir;
     private TextView tv_Contactos;

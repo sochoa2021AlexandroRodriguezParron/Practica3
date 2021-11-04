@@ -13,7 +13,11 @@
         <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/layout/activity_start_activy_for_result.xml" value="0.1" />
         <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/mipmap-anydpi-v26/ic_empresa.xml" value="0.1537037037037037" />
         <entry key="..\:/Users/Alex09/Desktop/Clase/2DAMREP/Android/Tema1/Practica3.1/app/src/main/res/mipmap-anydpi-v26/ic_empresa_round.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_nuevo_contacto.xml" value="0.22310405643738976" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/layout/activity_nuevo_contacto.xml" value="0.19791666666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15208333333333332" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.15208333333333332" />
       </map>
     </option>
   </component>
