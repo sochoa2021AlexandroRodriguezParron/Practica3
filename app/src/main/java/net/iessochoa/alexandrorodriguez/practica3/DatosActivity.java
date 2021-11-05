@@ -26,10 +26,12 @@ public class DatosActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos);
 
+        //Sincronizamos los atributos con los componentes del layout
         etValor = findViewById(R.id.etValor);
         bOKValores = findViewById(R.id.bOKValores);
         bCancelValores = findViewById(R.id.bCancelValores);
 
+        //Listener de botones
         bOKValores.setOnClickListener(this);
         bCancelValores.setOnClickListener(this);
 
